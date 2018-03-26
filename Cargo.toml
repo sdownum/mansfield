@@ -1,0 +1,6 @@
+[package]
+name = "mansfield"
+version = "0.1.0"
+authors = ["Steven Downum <steven_downum@dell.com>"]
+
+[dependencies]
