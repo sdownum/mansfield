@@ -24,33 +24,11 @@
  * THE SOFTWARE.
  */
 
-static PROGRAM:    &str = "mansfield";
+use std::env;
+use std::fs::File;
+use std::io::Write;
+use std::path::Path;
 
 fn main() {
-    if std::env::args().count() != 1 {
-        usage();
-        std::process::exit(1);
-    }
-
-    do_repl();
-}
-
-fn do_repl() {
-    let mut stop = false;
-
-    // Print REPL header
-    
-
-    
-    // REPL loop
-    while stop == false {
-        println!(">>> ");
-        stop = true;
-    }
-}
-
-fn usage() {
-    println!("usage: {} [OPTIONS]\n\n", PROGRAM);
-    println!(" OPTIONS: \n");
-    println!("No options currently defined\n");
+    let out_dir = env::var("OUT_DIR").unwrap();
 }
