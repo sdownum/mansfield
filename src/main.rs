@@ -24,7 +24,15 @@
  * THE SOFTWARE.
  */
 
+extern crate rustyline;
+
+use rustyline::Editor;
+use rustyline::error::ReadlineError;
+
 static PROGRAM:    &str = "mansfield";
+static VERSION:    &str = "0.0.1";
+static BRANCH:     &str = "rustyline";
+static ARCH:       &str = "Windows x64";
 
 fn main() {
     if std::env::args().count() != 1 {
@@ -36,16 +44,34 @@ fn main() {
 }
 
 fn do_repl() {
-    let mut stop = false;
+    let mut rl = Editor::<()>::new();
 
     // Print REPL header
+    println!("{} {}-{}; {} version", PROGRAM, VERSION, BRANCH, ARCH);
+    println!("Use Ctrl-C or Crtl-D to exit.");
     
-
     
     // REPL loop
-    while stop == false {
-        println!(">>> ");
-        stop = true;
+    loop {
+        let readline = rl.readline(">>> ");
+        match readline {
+            Ok(line) => {
+                rl.add_history_entry(&line);
+                println!("{}", line);
+            },
+            Err(ReadlineError::Interrupted) => {
+                println!("CTRL-C");
+                break
+            },
+            Err(ReadlineError::Eof) => {
+                println!("CTRL-D");
+                break
+            },
+            Err(err) => {
+                println!("{}: ERROR - {:?}", PROGRAM, err);
+                break
+            }
+        }
     }
 }
 

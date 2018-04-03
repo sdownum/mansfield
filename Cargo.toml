@@ -1,6 +1,7 @@
 [package]
 name = "mansfield"
 version = "0.1.0"
-authors = ["Steven Downum <steven_downum@dell.com>"]
+authors = ["Steven Downum <devilaether@gmail.com>"]
 
 [dependencies]
+rustyline = "1.0.0"
