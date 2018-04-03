@@ -30,9 +30,9 @@ use rustyline::Editor;
 use rustyline::error::ReadlineError;
 
 static PROGRAM:    &str = "mansfield";
-static VERSION:    &str = "0.0.1";
-static BRANCH:     &str = "rustyline";
 static ARCH:       &str = "Windows x64";
+
+include!("version.rs");
 
 fn main() {
     if std::env::args().count() != 1 {
@@ -47,7 +47,7 @@ fn do_repl() {
     let mut rl = Editor::<()>::new();
 
     // Print REPL header
-    println!("{} {}-{}; {} version", PROGRAM, VERSION, BRANCH, ARCH);
+    println!("{} {} on {}; {} version", PROGRAM, MANSFIELD_GIT_TAG, MANSFIELD_BUILD_DATE, ARCH);
     println!("Use Ctrl-C or Crtl-D to exit.");
     
     
